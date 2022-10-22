@@ -1,0 +1,388 @@
+/Section 1: Build a passenger counter app
+Lesson 4: Write your first Javascript variable/
+
+let myAge = 15;
+
+console.log(myAge);
+
+/Section 1: Build a passenger counter app
+Lesson 4: Basic mathematical operations/
+
+let myAge = 15;
+
+let humanDogRatio = 7;
+
+let myDogAge = myAge * humanDogRatio;
+
+console.log(myDogAge);
+
+/Section 1: Build a passenger counter app
+Lesson 5: Reassigning and incrementing/
+
+let bonusPoints = 50;
+console.log(bonusPoints)
+
+bonusPoints = bonusPoints + 50;
+
+console.log(bonusPoints);
+
+bonusPoints = bonusPoints - 75;
+console.log(bonusPoints);
+
+bonusPoints = bonusPoints + 45;
+
+console.log(bonusPoints);
+
+/Section 1: Build a passenger counter app
+Lesson 6: Adding a button/
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>People entered:</h1>
+    <h2 id="count-el">0</h2>
+    <button id="increment-btn">INCREMENT</button>
+    <script src="index.js"></script>
+</body>
+</html>
+
+/Section 1: Build a passenger counter app
+Lesson 7: The onclick even listener/
+
+/HTML:/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>People entered:</h1>
+    <h2 id="count-el">0</h2>
+    <button id="increment-btn" onclick="increment()">INCREMENT</button>
+    <script src="index.js"></script>
+</body>
+</html>
+
+/JS:/
+function increment() {
+    console.log("The button was clicked")
+}
+
+/Section 1: Build a passenger counter app
+Lesson 7: Using functions to write less code/
+
+function countdown() {
+    console.log(5)
+    console.log(4)
+    console.log(3)
+    console.log(2)
+    console.log(1)
+}
+
+countdown()
+
+/Section 1: Build a passenger counter app
+Lesson 8: Write your first function/
+
+function numberLog() {
+    console.log(42);
+}
+
+numberLog()
+
+/Section 1: Build a passenger counter app
+Lesson 9: Write a function that logs the sum/
+
+let lap1 = 34
+let lap2 = 33
+let lap3 = 36
+
+function totalLapLog() {
+    totalTime = lap1 + lap2 + lap3
+    console.log(totalTime)
+}
+
+totalLapLog()
+
+/Section 1: Build a passenger counter app
+Lesson 10: Write a function that increments/
+
+let lapsCompleted = 0
+
+function incrementLap() {
+    lapsCompleted = lapsCompleted + 1
+}
+
+
+incrementingLap()
+incrementingLap()
+incrementingLap()
+
+console.log(lapsCompleted)
+
+/Section 1: Build a passenger counter app
+Lesson 11: Increment on clicks/
+
+let count = 0
+
+function increment() {
+    count = count + 1
+    console.log(count)
+}
+
+/Section 1: Build a passenger counter app
+Lesson 12: Display the count/
+
+let countEl = document.getElementById("count-el")
+
+let count = 0
+
+function increment() {
+    count = count + 1
+    countEl.innerText = count
+}
+
+/Section 1: Build a passenger counter app
+Lesson 13: Display the count/
+
+let countEl = document.getElementById("count-el")
+console.log(countEl)
+let count = 0
+function increment() {
+    count = count + 1
+    countEl.innerText = count
+}
+
+/Section 1: Build a passenger counter app
+Lesson 14: The Document Object Model/
+
+DOM = how to use Javascript to modify a website
+
+/Section 1: Build a passenger counter app
+Lesson 15: Display the count with innerText/
+
+// grab the count-el element, store it in a countEl variable
+let countEl = document.getElementById("count-el")
+let count = 0
+
+function increment() {
+    count = count + 1
+    // set countEl's innerText to the count
+    countEl.innerText = count
+}
+
+/Section 1: Build a passenger counter app
+Lesson 16: Create the save button/
+
+HTML:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>People entered:</h1>
+    <h2 id="count-el">0</h2>
+    <button id="increment-btn" onclick="increment()">INCREMENT</button>
+    <!-- 2. Create a SAVE button.
+        Set the id to "save-btn" and call the save() function when it's clicked -->
+    <button id="save-btn" onclick="save()">SAVE</button>
+    <script src="index.js"></script>
+</body>
+</html>
+
+Javascript:
+
+let countEl = document.getElementById("count-el")
+let count = 0
+
+function increment() {
+    count = count + 1
+    countEl.innerText = count
+}
+
+// 1. Create a function, save(), which logs out the count when it's called
+function save() {
+    console.log(count)
+}
+
+/Section 1: Build a passenger counter app
+Lesson 17: What is a string?/
+
+String = it is textual content.
+
+/Section 1: Build a passenger counter app
+Lesson 18: Write your first string variable/
+
+let username = "per"
+
+// Create a variable, message, that stores the string: "You have tree new notifications"
+
+let message = "You have tree new notifications"
+
+console.log(message + ", " + username + "!")
+
+// Create a variable, messageToUser, that contains the message we have logged
+
+let messageToUser = message + ", " + username + "!"
+
+console.log(messageToUser)
+
+/Section 1: Build a passenger counter app
+Lesson 19: Log a greeting to the console/
+
+// Create two variables, name and greeting. The name variable should store your name,
+// and the greeting should store e.g. "Hi, my name is "
+
+let myName = "leonardo"
+
+let greeting = "Hi, my name is "
+
+// Create a third variable, myGreeting, that contatenates the two strings
+// Log myGreeting to the console
+
+let myGreeting = greeting + myName
+
+console.log(myGreeting)
+
+/Section 1: Build a passenger counter app
+Lesson 20: String vs Numbers/
+
+let myName = 42
+let greeting = "Hi, my name is "
+let myGreeting = greeting + myName
+// console.log(myGreeting)
+
+console.log(4 + 5) // 9
+console.log("2" + "4") // 24
+console.log("5" + 1) // 51
+console.log(100 + "100") // 100100
+
+// when we're talking about string and numbers string always wins
+
+/Section 1: Build a passenger counter app
+Lesson 21: Render a welcome message/
+
+// Grab the welcome-el paragraph and store it in a variable called welcomeEl
+
+let welcomeEl = document.getElementById("welcome-el")
+
+// Create two variables (name & greeting) that contains your name
+// and the greeting we want to render on the page
+
+let myName = "leonardo"
+let greeting = "Welcome back "
+
+let welcomeGreeting = greeting + myName
+
+// Render the welcome message using welcomeEl.innerText
+
+welcomeEl.innerText = greeting + myName
+
+/Section 1: Build a passenger counter app
+Lesson 22: Improve the message with string concatenation/
+
+let welcomeEl = document.getElementById("welcome-el")
+
+let myName = "Leonardo"
+let greeting = "Welcome back "
+
+welcomeEl.innerText = greeting + myName 
+
+// Add an emoji to the end! 👋
+// WRITE YOUR CODE BELOW HERE
+// HINT: count = count + 1
+
+welcomeEl.innerText += " 👋"
+
+/Section 1: Build a passenger counter app
+Lesson 23: Use plus equal for count/
+
+let countEl = document.getElementById("count-el")
+let count = 0
+
+function increment() {
+    // Change this to use the plus equal technique you've learned
+    count += 1
+    countEl.innerText = count
+}
+
+function save() {
+    console.log(count)
+}
+
+/Section 1: Build a passenger counter app
+Lesson 24: Create the save feature/
+
+// 1. Grab the save-el paragrah and store it in a variable called saveEl
+let saveEl = document.getElementById("save-el")
+let countEl = document.getElementById("count-el")
+let count = 0
+
+function increment() {
+    count += 1
+    countEl.innerText = count
+}
+
+function save() {
+    // 2. Create a variable that contains both the count and the dash separator, i.e. "12 - "
+    let Dashseparator = count + " - "
+    // 3. Render the variable in the saveEl using innerText
+    saveEl.innerText += Dashseparator 
+    // NB: Make sure to not delete the existing content of the paragraph
+    console.log(count)
+}
+
+/Section 1: Build a passenger counter app
+Lesson 25: Debugging online/
+
+let saveEl = document.getElementById("save-el")
+let countEl = document.getElementById("count-el")
+let count = 0
+
+function increment() {
+    count += 1
+    countEl.textContent = count
+}
+
+function save() {
+    let Dashseparator = count + " - "
+    saveEl.textContent += Dashseparator 
+    console.log(count)
+}
+
+// Google:
+// innerText alternative mdn
+
+/Section 1: Build a passenger counter app
+Lesson 26: Set the count to 0/
+
+let saveEl = document.getElementById("save-el")
+let countEl = document.getElementById("count-el")
+
+let count = 0
+
+function increment() {
+    count += 1
+    countEl.textContent = count
+
+}
+
+function save() {
+    let Dashseparator = count + " - "
+    saveEl.textContent += Dashseparator 
+    countEl.textContent = 0 
+    count = 0
+}
+
+

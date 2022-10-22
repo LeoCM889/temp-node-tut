@@ -1,0 +1,1138 @@
+/Lesson 1: Destructuring objects:/
+
+const personalInformation = {
+    firtName: "Leonardo",
+    lastName: "Castillo Mendoza",
+    age: 16,
+    city: "San Isidro",
+    state: "Santo Domingo",
+    zipCode: 11501
+}
+console.log(personalInformation.firtName, personalInformation.lastName)
+
+const {firtName: fn, lastName: ln} = personalInformation
+
+console.log(`${fn} ${ln}`)
+
+/Lesson 2: Destructuring Arrays:/
+
+/*
+let names = ["Leonardo", "Miguel", "Rafael"]
+
+names[0] = "Man"
+
+console.log(names[0], names[1], names[2])
+*/
+
+let [firstName, middleName, lastName] = ["Leonardo", "Miguel", "Rafael"]
+
+middleName = "Pedro"
+
+console.log(firstName, middleName, lastName)
+
+/Lesson 3: Object Literal:/
+
+function addressMaker(city, state) {
+    const newAddress = {city, state}
+// const newAddress = {newCity: city, newState: state}
+
+    console.log(newAddress)
+}
+
+addressMaker("San Isidro", "Santo Domingo")
+
+/Lesson 4: Object Literal(challenge):/
+
+function addressMaker(address) {
+    const {city, state} = address
+    const newAddress = {
+        city,
+        state,
+        country: "Dominican Republic"
+    }
+    console.log(`${newAddress.city} ${newAddress.state} ${newAddress.country}`)
+}
+
+addressMaker({city: "San Isidro", state: "Santo Domingo"})
+
+/Lesson 5: Spread Operator:/
+
+let user1 = {
+    firstName: "Leonardo",
+    lastName: "Castillo Mendoza",
+    age: 16,
+    country: "Dominican Republic"
+}
+
+let employee = {
+    ...user1
+}
+
+console.log(employee)
+
+/Lesson 6: Rest Operator:/
+
+function add(...nums) {
+    console.log(nums)
+ // console.log(arguments)
+}
+
+add(4, 7, 16, 22, 5)
+
+Lesson 7: array.forEach():/
+
+// ********* index.js *********
+
+// forEach() =  Performs a function for each 
+//              element in an array.
+
+let total = 0
+let cart = [5, 6, 7, 8, 9]
+
+function checkOut(element) {
+    total += element
+}
+
+cart.forEach(checkOut)
+
+console.log(`Your total is: $${total}`)
+
+Lesson 8: array.map():/
+
+// ********* index.js *********
+ 
+// map() =  Performs a function for each 
+//                 element in an array, then stores
+//                 the returned values in a new array
+
+let storeUSD = [5, 6, 7, 8, 9]
+
+function toEuros(value) {
+
+    value *= 0.85
+    return value
+}
+
+let storeEUR = storeUSD.map(toEuros)
+
+
+console.log(storeUSD)
+console.log(storeEUR)
+
+Lesson 9: array.filter():/
+
+// ******* index.js *******
+ 
+// filter() = Returns the elements of an array
+//                that meets a condition specified
+//                in a function. 
+
+let students = [16, 17, 18, 19, 20]
+
+function checkAge(age) {
+
+    if (age >= 18) {
+        return age
+    } 
+}
+
+let adultStudents = students.filter(checkAge)
+
+console.log(adultStudents)
+
+Lesson 10: array.reduce():/
+
+// ******* index.js *******
+ 
+// reduce() =  Reduces an array to a single value
+//                     The return value of the callback 
+//                     function is the accumulated result, 
+//                     and is provided as an argument in 
+//                     the next call to the callback function.
+
+let letters = ["H", "E", "L", "P"];
+
+combineLetters = (total, nextLetter, index, array) => {
+    return total + nextLetter
+}
+
+let word = letters.reduce(combineLetters)
+
+console.log(word)
+
+Lesson 11: callbacks():/
+
+// ********* index.js *********
+ 
+// callback = function passed as an argument to another function.
+//                    allows a function to invoke another function 
+
+// ***************************
+
+let message 
+
+function displayConsole(output) {
+
+    console.log(output)
+}
+
+function displayDOM(output) {
+
+    document.getElementById("myH1").innerHTML = output
+}
+
+function setMessage(text, callBack) {
+
+    message = text
+    callBack(message)
+}
+
+setMessage("Hi mom!", displayConsole)
+
+// Another example
+
+const userLeft = false
+const userWatchingCatMeme = false
+
+function watchTutorialCallback(callback, errorCallback) {
+  if (userLeft) {
+    errorCallback({
+      name: "User Left",
+      message: ":("
+    })
+  } else if (userWatchingCatMeme) {
+    errorCallback({
+      name: "User Watching Cat Meme",
+      message: "WebDevSimplified < Cat"
+    })
+  } else {
+    callback("Thumbs up and Subscribe")
+  }
+}
+
+watchTutorialCallback((message) => {
+  console.log("Success: " + message)
+}, (error) => {
+  console.log(error.name + " " + error.message)
+})
+
+/Lesson 12: Arrow functions:/
+
+// ******* index.js *******
+ 
+// arrow function =>
+// shortcut for a function expression
+
+let hello
+let x = "Yo"
+let y = "Leonardo!"
+
+// function expression
+
+hello = function(x, y) {
+    console.log(x)
+    console.log(y)
+}
+hello(x, y)
+
+// arrow function
+
+hello = (x, y) => {
+    console.log(x)
+    console.log(y)
+}
+hello(x, y)
+
+/Lesson 13: Default Params:/
+
+function add(numArray = []) {
+    let total = 0
+    numArray.forEach(element => {
+        total += element
+    })
+    console.log(total)
+}
+
+add()
+
+/Lesson 14: Includes:/
+
+let numArray = [1,2,3,4,5]
+
+console.log(numArray.includes(5))
+
+/Lesson 15: Import & Export:/
+
+example.js:
+export const data = [1,2,3]
+
+test.js:
+
+import {data} from './example.js'
+let updateData = data
+
+updateData.push(6)
+console.log(updateData)
+
+/Lesson 15: padStart() & padEnd():/
+
+const example = "Leonardo"
+
+console.log(example.padStart(16, "Castillo"))
+console.log(example.padEnd(15, "Mendoza"))
+
+/Lesson 16: Classes:/
+
+// ********* index.js *********
+
+// class = A "blueprint" for creating objects.
+//               Define properties and/or methods.
+
+class Car {
+    
+    drive() {
+        console.log("You drive the car!")
+    }
+
+    brake() {
+        console.log("You step on the brakes!")
+    }
+}
+
+let car1 = new Car()
+let car2 = new Car()
+
+car1.drive()
+car2.brake() 
+
+/Lesson 17: Constructors():/
+
+// ******* index.js *******
+
+// constructor = A special method for assigning properties.
+//                          Automatically called when creating an object.
+
+class Car {
+    
+    constructor(make, model, year, color) {
+        this.make = make
+        this.model = model
+        this.year = year
+        this.color = color
+    }
+
+    drive() {
+        console.log("You drive the car!")
+    }
+
+    brake() {
+        console.log("You step on the brakes!")
+    }
+}
+
+let car1 = new Car("Ford", "Mustang", 2022, "red")
+let car2 = new Car("Chevy", "Corvette", 2021, "blue")
+
+console.log(car1.make);
+console.log(car1.model);
+console.log(car1.year);
+console.log(car1.color);
+
+console.log(car2.make);
+console.log(car2.model);
+console.log(car2.year);
+console.log(car2.color);
+
+/Lesson 18: This keyword:/
+
+// ******* index.js *******
+
+// this = A reference to the object that
+//            we're currently working with
+
+class Car {
+    
+    constructor(make, model, year, color) {
+        this.make = make
+        this.model = model
+        this.year = year
+        this.color = color
+    }
+
+    drive() {
+        console.log("You drive the",this.model)
+    }
+
+    brake() {
+        console.log("You step on the",this.model+"'s brakes!")
+    }
+
+    whatIsThis() {
+        return this
+    }
+}
+
+let car1 = new Car("Ford", "Mustang", 2022, "red")
+let car2 = new Car("Chevy", "Corvette", 2021, "blue")
+
+console.log(car1.whatIsThis())
+car1.drive();
+car2.brake();
+console.log(this)
+
+/Lesson 19: static keyword:/
+
+// ******* index.js *******
+
+// static = a method or property that belongs to a class
+//               and not any one object
+
+class Car {
+
+    static numberOfCars = 0
+
+    static beginRace() {
+        console.log("The race has begun")
+    }
+
+    constructor(model) {
+        this.model = model
+        Car.numberOfCars += 1
+    }
+}
+
+let car1 = new Car("Mustang")
+let car2 = new Car("Corvette")
+let car3 = new Car("Challenger")
+
+console.log(Car.numberOfCars)
+Car.beginRace()
+
+/Lesson 20: Inheritance:/
+
+// ******* index.js *******
+
+// inheritance = Useful for code reusability. 
+//                         Reuse properties and methods of an existing class.
+//                         Children classes inherit from parent classes.
+
+class Animal{
+
+    constructor(){
+      this.alive = true;
+    }
+    eat(){
+      console.log("This creature is eating");
+    }
+  }
+  
+  class Rabbit extends Animal{
+  
+    run(){
+      console.log("This rabbit is running");
+    }
+  }
+  class Fish extends Animal{
+  
+    swim(){
+      console.log("This fish is swimming");
+    }
+  }
+  class Hawk extends Animal{
+  
+    fly(){
+      console.log("This hawk is flying");
+    }
+  }
+  
+  let rabbit = new Rabbit();
+  let fish = new Fish();
+  let hawk = new Hawk();
+  
+  console.log(rabbit.alive);
+  console.log(fish.alive);
+  console.log(hawk.alive);
+  
+  rabbit.eat();
+  fish.eat();
+  hawk.eat();
+  
+  rabbit.run();
+  fish.swim();
+  hawk.fly();
+
+/Lesson 21: Method overriding:/
+
+// ******* index.js *******
+
+// method overriding = 
+//                     a child class will use methods
+//                     with the same name that are
+//                     most closely associated with it. 
+
+class Vehicle{
+
+    drive(){
+      console.log("You drive the vehicle");
+    }
+  }
+  
+  class Car extends Vehicle{
+  
+    drive(){
+      console.log("You drive the car!");
+    }
+  }
+  
+  class RaceCar extends Car{
+  
+    drive(){
+      console.log("You drive the racecar!!!!!!!");
+    }
+  }
+  
+  let vehicle = new Vehicle();
+  let car = new Car();
+  let raceCar = new RaceCar();
+  
+  vehicle.drive();
+  car.drive();
+  raceCar.drive();
+
+/Lesson 22: Super keyword:/
+
+// ********* index.js *********
+ 
+// super = Reference to the parent class (super class)
+//         Very similar to "this" keyword
+//         Can use a super classes: constructor, methods
+
+class Person {
+
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+  }
+
+  welcome() {
+    console.log("Hello", this.name)
+    console.log("You are", this.age, "years old")
+  }
+}
+
+class Student extends Person {
+
+  constructor(name, age, gpa) {
+    super(name, age)
+    this.gpa = gpa
+  }
+  hello() {
+    super.welcome()
+    console.log("Your gpa is", this.gpa)
+  }
+}
+
+class Teacher extends Person {
+
+  constructor(name, age, classSize) {
+    super(name, age)
+    this.classSize = classSize
+  } 
+
+  hello() {
+    super.welcome()
+    console.log("Your class size is", this.classSize)
+  }
+}
+
+let student = new Student("Steve", 21, 2.0)
+let teacher = new Teacher("Bob", 45, 30)
+
+//console.log(student.name)
+//console.log(student.age)
+//console.log(student.gpa)
+
+//console.log(teacher.name)
+//console.log(teacher.age)
+//console.log(teacher.classSize)
+
+student.hello()
+teacher.hello()
+
+/Lesson 23: Object as arguments:/
+
+// ********* index.js *********
+
+// Objects as arguments
+
+class Car {
+
+  constructor(model, color) {
+    this.model = model
+    this.color = color
+  }
+}
+function changeColor(car, newModel) {
+  car.model = newModel;
+}
+
+let car1 = new Car("Corvette", "blue")
+let car2 = new Car("Mustang", "red")
+
+changeColor(car1, "Mercedes")
+changeColor(car2, "Ford")
+
+console.log(car1.model, car1.color)
+console.log(car2.model, car2.color)
+
+/Lesson 24: Array of objects:/
+
+// ******* index.js *******
+ 
+// array of objects
+ 
+class Car{
+ 
+  constructor(model, color){
+    this.model = model;
+    this.color = color;
+  }
+  drive(){
+    console.log("You drive the", this.model);
+  }
+}
+
+let garage = [];
+
+let car1 = new Car("Corvette", "blue");
+let car2 = new Car("Mustang", "red");
+let car3 = new Car("Lambo", "yellow");
+
+garage = [car1, car2, car3];
+
+//console.log(garage[0].model);
+//console.log(garage[1].model);
+//console.log(garage[2].model);
+
+for(let i = 0; i < garage.length; i++){
+
+  console.log(garage[i].model);
+  garage[i].drive();
+}
+
+/Lesson 25: Array of function:/
+
+// ******* index.js *******
+ 
+// array of functions
+
+function jump(){
+  console.log("You jump!");
+}
+
+function punch(){
+  console.log("You punch!");
+}
+
+function kick(){
+  console.log("You kick!");
+}
+
+function block(){
+  console.log("You block!");
+}
+
+let actions = []
+
+actions = [jump, punch, kick, block]
+
+/* 
+for (let i = 0; i < actions.length; i++) {
+  actions[i]()
+}
+*/
+
+actions.forEach(func => func())
+
+/Lesson 26: Getters and setters:/
+
+// ********* index.js *********
+ 
+// Why use getters & setters?
+
+// a way to get/set the properties of an object
+// Secures better data quality
+// Does extra things behind-the-scenes
+
+class User {
+
+  constructor(first, last) {
+    this.first = first
+    this.last = last
+  }
+  set first(value) {
+    this.firstName = value.toUpperCase()
+  }
+  set last(value) {
+    this.lastName = value.toUpperCase()
+  }
+  get fullName() {
+    return this.firstName+ " " +this.lastName
+  }
+}
+
+let user1 = new User("spongebob", "squarepants");
+let user2 = new User("patrick", "star");
+
+console.log(user1.fullName);
+console.log(user2.fullName);
+
+/Lesson 27: error handling:/
+
+"use strict"
+const ps = require("prompt-sync")
+const prompt = ps()
+
+// ******* index.js *******
+
+// try     = tests a block of code for errors.
+// catch   = handles the error.
+// throw   = creates custom errors. (throw exception)
+// finally = execute code, after try and catch, regardless
+
+try{
+  let age = prompt("Enter your age: ")
+  //console.log(`you are ${age} years old`)
+
+  if(age === "") throw "You didn't enter in anything!"
+  if(isNaN(age)) throw age + " isn't a number!"
+  if(age < 18) throw "You need to be 18+ to sign up!"
+
+  console.log("You are now signed up!")
+}
+catch(error) {
+  console.log(error)
+  //console.log(error.name)
+  //console.log(error.message)
+}
+
+finally {
+  console.log("Thanks for visiting!")
+}
+/Lesson 28: Promises:/
+
+let p = new Promise((resolve, reject) => {
+  let a = 1 + 1
+  if (a === 2) {
+    resolve("Success")
+  } else {
+    reject("Failed")
+  }
+})
+
+p.then((message) => {
+  console.log(`This is in the then ${message}`)
+}).catch((message) => {
+  console.log(`This is in the catch ${message}`)
+})
+
+// Another example
+
+function watchTutorialPromise() {
+  return new Promise((resolve, reject) => {
+    if (userLeft) {
+      reject({
+        name: "User Left",
+        message: ":("
+      })
+    } else if (userWatchingCatMeme) {
+      reject({
+        name: "User Watching Cat Meme",
+        message: "WebDevSimplified < Cat"
+      })
+    } else {
+      resolve("Thumbs up and Subscribe")
+    }
+  })
+}
+
+watchTutorialPromise().then((message) => {
+  console.log("Success: " + message)
+}).catch((error) => {
+  console.log(error.name + " " + error.message)
+})
+
+// another example:
+
+const recordVideoOne = new Promise((resolve, reject) => {
+  resolve("Video 1 recorded")
+})
+
+const recordVideoTwo = new Promise((resolve, reject) => {
+  resolve("Video 2 recorded")
+})
+
+const recordVideoThree = new Promise((resolve, reject) => {
+  resolve("Video 3 recorded")
+})
+
+// The Promise. all() method takes an iterable of promises as an input, and returns a single Promise 
+// that resolves to an array of the results of the input promises. This returned promise will resolve 
+// when all of the input's promises have resolved, or if the input iterable contains no promises.
+Promise.all([
+  recordVideoOne,
+  recordVideoTwo,
+  recordVideoThree
+]).then((messages) => {
+  console.log(messages)
+})
+
+// Promise.race() is like Promise.all() except for it'll return as soon as the first one is completed instead
+// of waiting for everything to complete and because of that it will only return a single message in the .then()
+// as opposed to all of the messages
+Promise.race([
+  recordVideoOne,
+  recordVideoTwo,
+  recordVideoThree
+]).then((message) => {
+  console.log(message)
+})
+
+/Lesson 29: Async and await:/
+
+function makeRequest(location) {
+  return new Promise((resolve, reject) => {
+    console.log(`Making request to ${location}`)
+    if (location === "Google") {
+      resolve("Google says hi")
+    } else {
+      reject("We can only talk to Google")
+    }
+  })
+}
+
+function processRequest(response) {
+  return new Promise((resolve, reject) => {
+    console.log("Processing response")
+    resolve(`Extra Information + ${response}`)
+  })
+}
+
+//makeRequest("Google").then((response) => {
+//  console.log("Response Received")
+//  return processRequest(response)
+//}).then((processResponse) => {
+//  console.log(processResponse)
+//}).catch((err) => {
+//  console.log(err)
+//})
+
+async function doWork() {
+  try {
+    const response = await makeRequest("Google")
+    console.log("Response Received")
+    const processedResponse = await processRequest(response)
+    console.log(processedResponse)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+doWork()
+
+// another example:
+
+const userLeft = false
+const userWatchingCatMeme = false
+
+let watchTutorialPromise = () => {
+    return new Promise((resolve, reject) => {
+        if(userLeft) {
+            reject({
+                name: "User Left",
+                message: ":("
+            })
+        } else if(userWatchingCatMeme) {
+            reject({
+                name: "User Watching Cat Meme",
+                message: "WebDevSimplified < Cat"
+            })
+        } else {
+            resolve("Thumbs up and Subscribe")
+        }
+    })
+}
+
+watchTutorialPromise().then((message) => {
+    console.log(`Success: ${message}`)
+}).catch((error) => {
+    console.log(`${error.name} ${error.message}`)
+})
+
+async function doWork() {
+    const message = await watchTutorialPromise()
+    console.log(`Success: ${message}`)
+}
+
+doWork()
+
+// another example
+
+const userLeft = false
+const userWatchingCatMeme = false
+
+const watchTutorialPromises = () => {
+    return new Promise((resolve, reject) => {
+        if (userLeft) {
+            reject({
+                name: "User Left",
+                message: ":("
+            })
+        } else if (userWatchingCatMeme) {
+            reject({
+                name: "User watching cat meme",
+                message: "Tutorial < Cat"
+            })
+        } else {
+            resolve("Thumbs up and subscribe")
+        }
+    })
+}
+
+/* watchTutorialPromises().then((message) => {
+    console.log(`Success: ${message}`)
+}).catch((err) => {
+    console.log(`${err.name} ${err.message}`)
+}) */
+
+const doWork = async () => {
+    try {
+
+        const response = await watchTutorialPromises()
+        console.log(`Success: ${response}`)
+
+    } catch(err) {
+        console.log(`${err.name} ${err.message}`)
+    }
+}
+
+doWork()
+
+/Lesson 30: modify HTML elements:/
+
+HTML:
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practica</title>
+</head>
+<body>
+    <h1 id="myH1">Hello World!</h1>
+    <p class="myP">This is sentence 1</p>
+    <p class="myP">This is sentence 2</p>
+    <button id="myButton">Click me 1</button>
+    <button>Click me 2</button>
+    <button>Click me 3</button>
+    <script src="test.js"></script>
+</body>
+</html>
+
+// ******* index.js *******
+
+// modify HTML elements
+// document.getElementById() (older)
+// document.querySelector()  (newer, more powerful)
+
+const myButton = document.querySelector("#myButton")
+
+myButton.addEventListener("click", () => {
+
+    const myH1 = document.querySelector("#myH1")
+    const underline = document.createElement("u")
+    underline.textContent = "Bye World!"
+    myH1.textContent = ""
+    myH1.append(underline)
+
+    const p = document.querySelectorAll(".myP")
+    //p[0].textContent = "WHOOOOOOOOAAAAA!"
+    p.forEach(element => element.textContent = "WHOA!")
+
+    const buttons = document.querySelectorAll("button")
+    //buttons[0].remove()
+    buttons.forEach(element => element.remove())
+})
+
+/Lesson 31: Change CSS properties:/
+
+const myButton = document.querySelector("#myButton")
+
+myButton.addEventListener("click", () => {
+
+    const myH1 = document.querySelector("#myH1")
+
+    myH1.style.color = "#00FF00"
+    myH1.style.backgroundColor = "black" 
+    myH1.style.fontFamily = "consolas"
+    myH1.style.textAlign = "center"
+    myH1.style.border = "4px solid blue"
+    myH1.style.width = " 50%"
+})
+
+
+/Lesson 32: Fetch API:/
+
+fetch('https://reqres.in/api/users', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        name: 'User 1'
+    })
+}).then(res => {
+    if (res.ok) {
+        console.log("SUCCESS")
+        return res.json()
+    } else {
+        console.log("NOT SUCCESSFUL")
+    }
+    
+}).then(data => console.log(data))
+
+/Lesson 33: Optional chainning:/
+
+class Person {
+  constructor(name, address, hobbies) {
+      this.name = name
+      this.address = address
+      this.hobbies = hobbies
+  }
+
+  print() {
+      console.log(this)
+  }
+}
+
+function printPersonStreet(person) {
+  console.log(person?.address?.street)
+}
+
+const leonardo = new Person(
+  "Leonardo",
+  {street: "Calle 10, Isabelita", city: "Santo Domingo"},
+  ["Calistechnics/Weight Lifting", "Learn new Skills", "Coding"]
+) 
+
+leonardo.print()
+
+printPersonStreet(leonardo)
+
+/Lesson 34: Looping through an array/ 
+
+let fruits = ["banana", "apple", "orange", "mango"]
+
+for (let fruit of fruits) {
+  console.log(fruit)
+}
+
+for (let i = 0; i < fruits.length; i++) {
+  const element = fruits[i]
+  console.log(element)
+}
+
+/Lesson 35: sort an array of strings/
+
+let fruits = ["banana", "apple", "orange", "mango"]
+
+fruits = fruits.sort().reverse()
+
+for(let fruit of fruits) {
+  console.log(fruit)
+}
+
+/Lesson 35: setTimeout()/
+
+// setTimeout() = invokes a function after a number of milliseconds
+// it's an asynchronous function (doesn't pause an execution of your program)
+
+let item = "cryptocurrency"
+let price = 420.69
+
+console.log("ghello world xd")
+let timer1 = setTimeout(firstMessage, 3000, item, price)
+let timer2 = setTimeout(secondMessage, 6000)
+let timer3 = setTimeout(thirdMessage, 9000)
+
+function firstMessage(item, price) {
+  alert(`Buy this ${item} for ${price}!`)
+}
+
+function secondMessage() {
+  alert(`This is not a scam!`)
+}
+
+function thirdMessage() {
+  alert(`DO ITT!`)
+}
+
+const button = document.querySelector(".myButton")
+
+button = addEventListener("click", () => {
+  clearTimeout(timer1)
+  clearTimeout(timer2)
+  clearTimeout(timer3)
+  alert(`Thanks for buying`)
+})
+
+<body>
+  <button class="myButton">Buy</button>
+</body>
+
+/Lesson 36: setInterval()/
+
+// setInterval() = invokes a function repeatedly after a number of miliseconds
+// it's an asynchronous function (doesn't pause an execution of your program)
+
+let count = 0
+let max = window.prompt("Count up to what #?")
+max = Number(max)
+
+const myTimer = setInterval(countUp, 1000)
+
+function countUp() {
+  count++
+  console.log(count)
+  if(count >= max) {
+    clearInterval(myTimer)
+  }
+}
+
+/Lesson 38: type conversion/
+
+// Type Conversion = change the datatype of a value to another
+//                   (strings, numbers, bolleans)
+
+// let age = window.prompt("How old are you?")
+
+// console.log(typeof age)
+// age = Number(age)
+// console.log(typeof age)
+
+// age += 1
+
+// console.log("Happy Birthday! You are", age, "years old")
+
+let x
+let y
+let z
+
+x = Number("3.14")
+y = String(3.14)
+z = Boolean("pizza")
+
+console.log(x, typeof x)
+console.log(y, typeof y)
+console.log(z, typeof z)

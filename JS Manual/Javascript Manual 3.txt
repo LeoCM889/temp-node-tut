@@ -1,0 +1,1481 @@
+/Section 3: Build a Chrome Extension
+Lesson 1: Add button and input tag/
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Create an input element with type="text" and id="input-el" -->
+    <input type="text" id="input-el">
+    <!-- Create a SAVE INPUT button with id="input-btn" -->
+    <button id="input-btn">SAVE INPUT</button>
+    <script src="index.js"></script>
+</body>
+</html>
+
+/Section 3: Build a Chrome Extension
+Lesson 2: Style the button and input tag/
+
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+
+Style our app according to the provided design!
+
+green color -> #5f9341
+
+*/
+
+
+input {
+    width: 100%;
+    /*padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    */
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #5f9341;
+    margin-bottom: 4px;
+}
+
+button {
+    background-color: #5f9341;   
+    color: #fafafa;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 3: Make the input button work with onclick/
+
+HTML:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input-el">
+    <button id="input-btn" onclick="saveLead()">SAVE INPUT</button>
+    <script src="index.js"></script>
+</body>
+</html>
+
+Javascript:
+// Log out "Button clicked!" when the user clicks the "SAVE INPUT" button
+
+function saveLead() {
+    console.log("Button clicked!")
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 4: Refactor to addEventListener/
+
+let inputBtn = document.getElementById("input-btn")
+
+inputBtn.addEventListener("click", function() {
+    console.log("Button clicked from addEventListener")
+})
+
+/Section 3: Build a Chrome Extension
+Lesson 5: Write your first addEventListener()/
+
+HTML:
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="box">Open the box!</div>
+        <script src="index.js"></script>
+    </body>
+</html>
+
+CSS:
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#box {
+    cursor: pointer;
+    background: lightseagreen;
+    padding: 40px;
+    width: 200px;
+    text-align: center;
+    margin: 20px auto;
+    color: white;
+    font-weight: bold;
+}
+
+Javascript:
+// 1. Grab the box from the DOM and store it in a variable
+// 2. Add a click event listener to the box 
+// 3. Log out "I want to open the box!" when it's clicked
+
+let box = document.getElementById("box")
+
+box.addEventListener("click", function() {
+    console.log("I want to open the box!")
+})
+
+/Section 3: Build a Chrome Extension
+Lesson 6: Your turn to refactor/
+
+// Refactor the code so that it uses .addEventListener()
+// when you click the SAVE INPUT button
+
+let inputBtn = document.getElementById("input-btn")
+
+inputBtn.addEventListener("click", function() {
+    console.log("Button clicked!")
+})
+
+/Section 3: Build a Chrome Extension
+Lesson 7: Create the myLeads array and inputEl/
+
+// Create two variables:
+// myLeads -> should be assigned to an empty array
+// inputEl -> should be assigned to the text input field
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+
+inputBtn.addEventListener("click", function() {
+    console.log("Button clicked!")
+})
+
+/Section 3: Build a Chrome Extension
+Lesson 8: When to use let and const/
+
+// If possible, use const. If not, use let.
+
+// Which variables below should be changed from let to const?
+
+// The customer wants to order some stuff. Here are the details:
+const basePrice = 520
+const discount = 120
+let shippingCost = 12
+let shippingTime = "5-12 days"
+
+// Whops! Turns out the shipping will be a bit more complex
+shippingCost = 15
+shippingTime = "7-14 days"
+
+// Calculating the full price
+const fullPrice = basePrice - discount + shippingCost
+
+// Finally, notifying the customer
+console.log("Total cost: " + fullPrice + ". It will arrive in " + shippingTime)
+
+/Section 3: Build a Chrome Extension
+Lesson 9: Push to the myLeads array/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+
+// Push the value "www.awesomelead.com" to myArray when the input button is clicked
+
+inputBtn.addEventListener("click", function() {
+    console.log("Button clicked!")
+    myLeads.push("www.awesomelead.com")
+})
+
+/Section 3: Build a Chrome Extension
+Lesson 10: Push the value from the input field/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+
+inputBtn.addEventListener("click", function() {
+    // Push the value from the inputEl into the myLeads array 
+    // instead of the hard-coded "www.awesomeleads.com" value
+    // Google -> "get value from input field javascript"
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
+})
+
+/Section 3: Build a Chrome Extension
+Lesson 11: Use a for loop to log out the leads/
+
+let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"]
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
+})
+
+
+// Log out the items in the myLeads array using a for loop 
+for (let i = 0; i < myLeads.length; i++) {
+    console.log(myLeads[i])
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 12: Create the unordered list/
+
+HTML:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input-el">
+    <button id="input-btn">SAVE INPUT</button>
+    <!-- 1. Create an unordered list element (<ul>) with id="ul-el" -->
+    <ul id="ul-el"></ul>
+    <script src="index.js"></script>
+</body>
+</html>
+
+Javascript:
+let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"]
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+// 2. Grab the unordered list and store it in a const variable called ulEl
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
+})
+
+
+for (let i = 0; i < myLeads.length; i++) {
+    console.log(myLeads[i])
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 13: Render the leads in the unordered list/
+
+let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"]
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
+})
+
+// Render the leads in the unordered list using ulEl.textContent
+for (let i = 0; i < myLeads.length; i++) {
+    ulEl.textContent += myLeads[i] + " "
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 14: How to render <li> elements with innerHTML/
+
+let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"]
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
+})
+
+
+for (let i = 0; i < myLeads.length; i++) {
+    ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 15: Write your first innerHTML/
+
+HTML:
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="container">
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
+
+CSS:
+body {
+    text-align: center;
+}
+
+#container {
+    margin-top: 30px;
+}
+
+#container button {
+    background: lightcoral;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+Javascript:
+// Use .innerHTML to render a Buy! button inside the div container
+
+const container = document.getElementById("container")
+
+container.innerHTML = "<button>Buy!</button>"
+
+/Section 3: Build a Chrome Extension
+Lesson 16: More innerHTML practice/
+
+HTML:
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="container">
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
+
+CSS:
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+    margin-top: 30px;
+}
+
+#container button {
+    background: lightcoral;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+p {
+    color: lightcoral;
+    font-weight: bold;
+}
+
+Javascript:
+const container = document.getElementById("container")
+
+container.innerHTML = "<button onclick='buy()'>Buy!</button>"
+
+// When clicked, render a paragraph under the button (in the container)
+// that says "Thank you for buying!"
+
+function buy() {
+    container.innerHTML += "<p>Thank you for buying!</p>"
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 17: Render the <li> elements with innerHTML/
+
+let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"]
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
+})
+
+// Replace .textContent with .innerHTML and use <li> tags
+for (let i = 0; i < myLeads.length; i++) {
+    ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 18: Use createElement() and append() instead of innerHTML/
+
+let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"]
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
+})
+
+// Let's try a different method!
+for (let i = 0; i < myLeads.length; i++) {
+     // ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+    // create element
+    // set text content
+    // append to ul
+    const li = document.createElement("li")
+    li.textContent += myLeads[i]
+    ulEl.append(li)
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 19: Improving the performance of our app/
+
+let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"]
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
+})
+
+// 1. Create a variable, listItems, to hold all the HTML for the list items
+// Assign it to an empty string to begin with
+let listItems = ""
+for (let i = 0; i < myLeads.length; i++) {
+    // 2. Add the item to the listItems variable instead of the ulEl.innerHTML
+    listItems += "<li>" + myLeads[i] + "</li>"
+}
+// 3. Render the listItems inside the unordered list using ulEl.innerHTML
+ulEl.innerHTML = listItems
+
+/Section 3: Build a Chrome Extension
+Lesson 20: Create the render function/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
+    // 2. Call the renderLeads() function
+    renderLeads()
+})
+
+// 1. Wrap the code below in a renderLeads() function
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        listItems += "<li>" + myLeads[i] + "</li>"
+    }
+    ulEl.innerHTML = listItems
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 21: Clear the input field/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
+    // Clear out the input field
+    inputEl.value = ""
+    renderLeads()
+})
+
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        listItems += "<li>" + myLeads[i] + "</li>"
+    }
+    ulEl.innerHTML = listItems
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 22: Add the <a> tag/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
+    inputEl.value = ""
+    renderLeads()
+})
+
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        // Wrap the lead in an anchor tag (<a>) inside the <li>
+        // Can you make the link open in a new tab?
+        listItems += "<li><a target='_blank' href='" + myLeads[i] + "'>" + myLeads[i] + "</a></li>"
+        console.log(listItems)
+    }
+    ulEl.innerHTML = listItems
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 23: Template strings/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    console.log(myLeads)
+    inputEl.value = ""
+    renderLeads()
+})
+
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        // listItems += "<li><a target='_blank' href='" + myLeads[i] + "'>" + myLeads[i] + "</a></li>"
+        listItems += `
+        <li>
+            <a target='_blank' href='${myLeads[i]}'>
+                ${myLeads[i]}
+            </a>
+        </li>
+    `
+    }
+    ulEl.innerHTML = listItems
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 24: Write your first template string/
+
+// template strings/literals
+
+const recipient = "James"
+
+// Refactor the email string to use template strings
+const email = `Hey ${recipient}! How is it going? Cheers Per`
+
+console.log(email)
+
+/Section 3: Build a Chrome Extension
+Lesson 25: Make the template string even more dynamic/
+
+// template strings/literals
+
+const recipient = "James"
+// Create a new variable, sender, and set its value to your name
+const sender = "Leonardo"
+
+// Use your sender variable instead of "Per"
+const email = `Hey ${recipient}! How is it going? Cheers ${sender}`
+
+console.log(email)
+
+/Section 3: Build a Chrome Extension
+Lesson 26: Template strings on multiple lines/
+
+// template strings/literals
+
+const recipient = "James"
+const sender = "Leonardo"
+
+// Break the email string into multiple lines
+const email = `
+Hey ${recipient}! 
+
+How is it going? 
+
+Cheers ${sender}
+`
+
+console.log(email)
+
+/Section 3: Build a Chrome Extension
+Lesson 27: Refactor the app to use a template string/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    renderLeads()
+})
+
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        // Refactor the code below to use a template string
+        listItems += `
+        <li>
+            <a target='_blank' href='${myLeads[i]}'>
+                ${myLeads[i]}
+            </a>
+        </li>
+    `
+    }
+    ulEl.innerHTML = listItems  
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 28: Style the list/
+
+CSS:
+
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #5f9341;
+    margin-bottom: 4px;
+}
+
+button {
+    background: #5f9341;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-weight: bold;
+}
+
+/* STYLE THE LIST ACCORDING TO THE DESIGN */
+ul {
+    margin-top: 20px;
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    margin-top: 5px;
+}
+
+a {
+    color: #5f9341;
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 29: Preparing the deployment/
+
+// It was just download a zip file 
+
+/Section 3: Build a Chrome Extension
+Lesson 30: Deploying the Chrome Extension/
+
+just upload my lead_tracker on chrome extensions
+
+/Section 3: Build a Chrome Extension
+Lesson 31: What is localStorage/
+
+/*localStorage is a property that allows JavaScript sites and apps to save 
+key-value pairs in a web browser with no expiration date. This means the data stored in 
+the browser will persist even after the browser window is closed. */
+
+/Section 3: Build a Chrome Extension
+Lesson 32: Your first localStorage/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+// 1. Save a key-value pair in localStorage
+// 2. Refresh the page. Get the value and log it to the console
+// 3. Clear localStorage
+
+//localStorage.setItem("name", "leonardo")
+
+//let myName = localStorage.getItem("name")
+//console.log(myName)
+
+localStorage.clear()
+
+// HINTS:
+// localStorage.setItem(key, value)
+// localStorage.getItem(key)
+// localStorage.clear()
+// PS: both key and value need to be strings
+
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    renderLeads()
+})
+
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        listItems += `
+        <li>
+            <a target='_blank' href='${myLeads[i]}'>
+                ${myLeads[i]}
+            </a>
+        </li>
+    `
+    }
+    ulEl.innerHTML = listItems  
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 33: Storing arrays in localStorage/
+
+let myLeads = `["www.awesomelead.com"]`
+
+// 1. Turn the myLeads string into an array
+myLeads = JSON.parse(myLeads)
+// 2. Push a new value to the array
+myLeads.push("www.epicleads.com")
+// 3. Turn the array into a string again
+myLeads = JSON.stringify(myLeads)
+// 4. Console.log the string using typeof to verify that it's a string
+console.log(typeof myLeads)
+
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    renderLeads()
+})
+
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        listItems += `
+        <li>
+            <a target='_blank' href='${myLeads[i]}'>
+                ${myLeads[i]}
+            </a>
+        </li>
+    `
+    }
+    ulEl.innerHTML = listItems  
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 34: Save the ledas to localStorage/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    // Save the myLeads array to localStorage 
+    // PS: remember JSON.stringify()
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
+    renderLeads()
+
+    // To verify that it works:
+    console.log( localStorage.getItem("myLeads") )
+})
+
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        listItems += `
+        <li>
+            <a target='_blank' href='${myLeads[i]}'>
+                ${myLeads[i]}
+            </a>
+        </li>
+    `
+    }
+    ulEl.innerHTML = listItems  
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 35: Get the leads from localStorage/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+// Get the leads from the localStorage - PS: JSON.parse()
+// Store it in a variable, leadsFromLocalStorage
+// Log out the variable
+let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+console.log(leadsFromLocalStorage)
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
+    renderLeads()
+
+    // To verify that it works:
+    console.log( localStorage.getItem("myLeads") )
+})
+
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        listItems += `
+        <li>
+            <a target='_blank' href='${myLeads[i]}'>
+                ${myLeads[i]}
+            </a>
+        </li>
+    `
+    }
+    ulEl.innerHTML = listItems  
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 36: Truthy and falsy values/
+
+// const credits = 0
+
+// if (credits) {
+//     console.log("Let's play 🎰")
+// } else {
+//     console.log("Sorry, you have no credits 😭")
+// }
+
+// truthy
+// falsy
+
+// false
+// 0
+// ""
+// null -> how you as a developer signalize emptiness
+// undefined -> how JavaScript signalizes emptiness
+// NaN
+
+/Section 3: Build a Chrome Extension
+Lesson 37: Guess the expression-truthy or falsy/
+
+// let trueOfFalse = Boolean("hello")
+// console.log(trueOfFalse)
+
+console.log(  Boolean("")   ) // false
+console.log(  Boolean("0")  ) // true
+console.log(  Boolean(100)  ) // true
+console.log(  Boolean(null) ) // false
+console.log(  Boolean([0])  ) // true
+console.log(  Boolean(-0)   ) // false
+
+/Section 3: Build a Chrome Extension
+Lesson 38: Checking localStorage before rendering/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+
+// ["lead1", "lead2"] or null
+let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+console.log(leadsFromLocalStorage)
+// 1. Check if leadsFromLocalStorage is truthy
+// 2. If so, set myLeads to its value and call renderLeads()
+
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
+    renderLeads()
+} 
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
+    renderLeads()
+})
+
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        listItems += `
+        <li>
+            <a target='_blank' href='${myLeads[i]}'>
+                ${myLeads[i]}
+            </a>
+        </li>
+    `
+    }
+    ulEl.innerHTML = listItems  
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 39: Style the delete button/
+
+HTML:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input-el">
+    <button id="input-btn">SAVE INPUT</button>
+    <button id="delete-btn">DELETE ALL</button>
+    <ul id="ul-el"></ul>
+    <script src="index.js"></script>
+    <div>
+
+    </div>
+</body>
+</html>
+
+CSS:
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 400px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #5f9341;
+    margin-bottom: 4px;
+}
+
+button {
+    background: #5f9341;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid #5f9341;
+    font-weight: bold;
+}
+
+/* Style the button according to the provided design */
+
+#delete-btn {
+    background: white;
+    color: #5f9341;
+}
+
+ul {
+    margin-top: 20px;
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    margin-top: 5px;
+}
+
+a {
+    color: #5f9341;
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 40: Make the delete button work/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+// 1. Store the delete button in a deleteBtn variable
+const deleteBtn = document.getElementById("delete-btn")
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
+    renderLeads()
+} 
+
+// 2. Listen for double clicks on the delete button (google it!)
+// 3. When clicked, clear localStorage, myLeads, and the DOM
+deleteBtn.addEventListener("dblclick", function() {
+    localStorage.clear()
+    myLeads = []
+    renderLeads()
+
+})
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
+    renderLeads()
+})
+
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        listItems += `
+        <li>
+            <a target='_blank' href='${myLeads[i]}'>
+                ${myLeads[i]}
+            </a>
+        </li>
+    `
+    }
+    ulEl.innerHTML = listItems  
+}
+
+/Section 3: Build a Chrome Extension
+Lesson 41: How function parameters can improve our code/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+const deleteBtn = document.getElementById("delete-btn")
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
+    render(myLeads)
+} 
+
+function render(leads) {
+    let listItems = ""
+    for (let i = 0; i < leads.length; i++) {
+        listItems += `
+        <li>
+            <a target='_blank' href='${leads[i]}'>
+                ${leads[i]}
+            </a>
+        </li>
+    `
+    }
+    ulEl.innerHTML = listItems  
+}
+
+deleteBtn.addEventListener("dblclick", function() {
+    localStorage.clear()
+    myLeads = []
+    render(myLeads)
+
+})
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
+    render(myLeads)
+})
+
+/Section 3: Build a Chrome Extension
+Lesson 42: Write your first function parameter/
+
+HTML:
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <p id="welcome-el"></p>
+        <script src="index.js"></script>
+    </body>
+</html>
+
+CSS:
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+JavaScript:
+const welcomeEl = document.getElementById("welcome-el")
+
+// Give the function a parameter, greeting, that replaces "Welcome back"
+function greetUser(greeting) {
+    welcomeEl.textContent = greeting + ", Per Harald Borgen 👋"    
+}
+
+greetUser("Hello")
+
+/Section 3: Build a Chrome Extension
+Lesson 43: Functions with multiple parameters/
+
+HTML:
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <p id="welcome-el"></p>
+        <script src="index.js"></script>
+    </body>
+</html>
+
+CSS:
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+Javascript:
+const welcomeEl = document.getElementById("welcome-el")
+
+// Add the ability to choose the emoji as well!
+
+function greetUser(greeting, name, emoji) {
+    // Rewrite the expression using template literals
+    welcomeEl.textContent = `${greeting}, ${name} ${emoji} `
+}
+
+greetUser("Howdy", "James", "😀")
+
+/Section 3: Build a Chrome Extension
+Lesson 44: Number as function parameters/
+
+// Create a function, add(), that adds two numbers together and returns the sum
+
+function add(num1, num2) {
+    return num1 + num2
+}
+
+console.log( add(3, 4)   ) // should log 7
+console.log( add(9, 102) ) // should log 111
+
+/Section 3: Build a Chrome Extension
+Lesson 45: Argument vs Parameters/
+
+// What are greeting and name? parameters
+// What are "Howdy" and "James"? arguments
+// What are num1 and num2? parameters
+// What are 3 and 4? arguments
+
+
+//.                parameters
+function greetUser(greeting, name) { 
+    welcomeEl.textContent = `${greeting}, ${name} 👋`
+}
+
+//.        arguments
+let hi = "Howdy"
+greetUser(hi, "James")
+
+
+function add(num1, num2) {
+    return num1 + num2
+}
+
+add(3, 4)
+
+/Section 3: Build a Chrome Extension
+Lesson 46: Array as parameters/
+
+// Create a function, getFirst(arr), that returns the first item in the array
+
+function getFirst(arr) {
+    return arr[0]
+}
+
+// Call it with an array as an argument to verify that it works
+
+console.log(getFirst(["Leonardo", 16, "Dominican Republic"]))
+
+/Section 3: Build a Chrome Extension
+Lesson 47: Refactor renderLeads() to use parameter/
+
+et myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+const deleteBtn = document.getElementById("delete-btn")
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
+    renderLeads()
+}
+
+// Refector the function so that it takes a parameter, leads, that it uses
+// instead of the global myLeads variable. Remember to update all invocations 
+// of the function as well.
+
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        listItems += `
+            <li>
+                <a target='_blank' href='${myLeads[i]}'>
+                    ${myLeads[i]}
+                </a>
+            </li>
+        `
+    }
+    ulEl.innerHTML = listItems
+}
+
+deleteBtn.addEventListener("dblclick", function() {
+    localStorage.clear()
+    myLeads = []
+    renderLeads()
+})
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+    renderLeads()
+})
+
+/Section 3: Build a Chrome Extension
+Lesson 48: Create the tabBtn/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+const deleteBtn = document.getElementById("delete-btn")
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+// 1. Grab the SAVE TAB button and store it in a tabBtn variable
+const tabBtn = document.getElementById("tab-btn")
+
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
+    render(myLeads)
+}
+
+const tabs = [
+    {url: "https://www.linkedin.com/in/per-harald-borgen/"}
+]
+
+// 2. Listen for clicks on tabBtn. Log Per's LinkedIn URL to the console
+tabBtn.addEventListener("click", function(){
+    console.log(tabs[0].url)
+})
+
+
+function render(leads) {
+    let listItems = ""
+    for (let i = 0; i < leads.length; i++) {
+        listItems += `
+            <li>
+                <a target='_blank' href='${leads[i]}'>
+                    ${leads[i]}
+                </a>
+            </li>
+        `
+    }
+    ulEl.innerHTML = listItems
+}
+
+deleteBtn.addEventListener("dblclick", function() {
+    localStorage.clear()
+    myLeads = []
+    render(myLeads)
+})
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+    render(myLeads)
+})
+
+/Section 3: Build a Chrome Extension
+Lesson 49: Save the tab url/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+const deleteBtn = document.getElementById("delete-btn")
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads")
+const tabBtn = document.getElementById("tab-btn")
+
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
+    render(myLeads)
+}
+
+const tabs = [
+    {url: "https://www.linkedin.com/in/per-harald-borgen/"}
+]
+
+tabBtn.addEventListener("click", function(){
+    // Save the url instead of logging it out
+    //console.log(tabs[0].url)
+    myLeads.push(tabs[0].url)
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
+    render(myLeads)
+})
+
+
+function render(leads) {
+    let listItems = ""
+    for (let i = 0; i < leads.length; i++) {
+        listItems += `
+            <li>
+                <a target='_blank' href='${leads[i]}'>
+                    ${leads[i]}
+                </a>
+            </li>
+        `
+    }
+    ulEl.innerHTML = listItems
+}
+
+deleteBtn.addEventListener("dblclick", function() {
+    localStorage.clear()
+    myLeads = []
+    render(myLeads)
+})
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+    render(myLeads)
+})
+
+/Section 3: Build a Chrome Extension
+Lesson 50: How to get the current tab?/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+const deleteBtn = document.getElementById("delete-btn")
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+const tabBtn = document.getElementById("tab-btn")
+
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
+    render(myLeads)
+}
+
+const tabs = [
+    {url: "https://www.linkedin.com/in/per-harald-borgen/"}
+]
+
+tabBtn.addEventListener("click", function(){
+    // Grab the URL of the current tab!
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        // since only one tab should be active and in the current window at once
+        // the return variable should only have one entry
+        let activeTab = tabs[0]
+        let activeTabId = activeTab.id // or do whatever you need
+
+    })
+    
+    myLeads.push(tabs[0].url)
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
+    render(myLeads)
+})
+
+
+function render(leads) {
+    let listItems = ""
+    for (let i = 0; i < leads.length; i++) {
+        listItems += `
+            <li>
+                <a target='_blank' href='${leads[i]}'>
+                    ${leads[i]}
+                </a>
+            </li>
+        `
+    }
+    ulEl.innerHTML = listItems
+}
+
+deleteBtn.addEventListener("dblclick", function() {
+    localStorage.clear()
+    myLeads = []
+    render(myLeads)
+})
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+    render(myLeads)
+})
+
+/Section 3: Build a Chrome Extension
+Lesson 51: Use the crome API to get the tab/
+
+let myLeads = []
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+const deleteBtn = document.getElementById("delete-btn")
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+const tabBtn = document.getElementById("tab-btn")
+
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
+    render(myLeads)
+}
+
+const tabs = [
+    {url: "https://www.linkedin.com/in/per-harald-borgen/"}
+]
+
+tabBtn.addEventListener("click", function(){
+    // Grab the URL of the current tab!
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        myLeads.push(tabs[0].url)
+        localStorage.setItem("myLeads", JSON.stringify(myLeads))
+        render(myLeads)
+    })
+})
+
+
+function render(leads) {
+    let listItems = ""
+    for (let i = 0; i < leads.length; i++) {
+        listItems += `
+            <li>
+                <a target='_blank' href='${leads[i]}'>
+                    ${leads[i]}
+                </a>
+            </li>
+        `
+    }
+    ulEl.innerHTML = listItems
+}
+
+deleteBtn.addEventListener("dblclick", function() {
+    localStorage.clear()
+    myLeads = []
+    render(myLeads)
+})
+
+inputBtn.addEventListener("click", function() {
+    myLeads.push(inputEl.value)
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+    render(myLeads)
+})
+
+/Section 3: Build a Chrome Extension
+Lesson 52: Deploy the final version/
+
+// Project saved in the folder called Leads tracker

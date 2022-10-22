@@ -1,0 +1,207 @@
+/Practice time-part 3:
+let & const/
+
+// SETTING THE STAGE
+const player = "Per"
+const opponent = "Nick"
+const game = "AmazingFighter"
+let points = 0
+let hasWon = false
+
+// PLAYING THE GAME
+points += 100
+hasWon = true
+
+// ANNOUNCING THE WINNER
+if (hasWon) {
+    console.log(`${player} got ${points} points and won the ${game} game!`)
+} else {
+    console.log(`The winner is ${opponent}! ${player} lost the game`)
+}
+
+// Go through all variables and decide if they should be let or const
+// Change the console logs to use template strings instead of double quotes
+
+/Practice time-part 3:
+Log out items in an array/
+
+let myCourses = ["Learn CSS Animations", "UI Design Fundamentals", "Intro to Clean Code"]
+
+// Create a function that takes a single parameter, an array,
+// and logs all the items of the array to the console.
+// Call the function while passing in myCourses as an argument
+
+function logItems(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i])
+    }
+}
+
+logItems(myCourses)
+
+/Practice time-part 3:
+Save to localStorage/
+
+// Save a value to localStorage
+// Delete your code and refresh the page
+// Fetch your value from localStorage and log it out
+
+localStorage.setItem("name", "leonardo")
+const name = localStorage.getItem("name")
+console.log(name)
+
+/Practice time-part 3:
+addEventListener and object array/
+
+HTML:
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <button id="button-btn">LOG JANE'S SCORE!</button>
+        <script src="index.js"></script>
+    </body>
+</html>
+
+CSS:
+body {
+    text-align: center;
+    background: whitesmoke;
+    color: darkgreen;
+    padding: 20px 0;
+}
+
+button {
+    background: lightcoral;
+    padding: 10px 16px;
+    border-radius: 4px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+Javascript:
+let data = [
+    {
+        player: "Jane",
+        score: 52
+    }, 
+    {
+        player: "Mark",
+        score: 41
+    }
+]
+
+// Fetch the button from the DOM, store it in a variable
+// Use addEventListener() to listen for button clicks
+// Log Jane's score when the button is clicked (via data)
+
+const buttonBtn = document.getElementById("button-btn")
+
+buttonBtn.addEventListener("click", function() {
+    console.log(data[0].score,)
+})
+
+/Practice time-part 3:
+Generate sentence/
+
+function generateSentence(desc, arr) {
+    let baseString = `The ${arr.length} ${desc} are `
+    const lastIndex = arr.length - 1
+    for (let i = 0; i < arr.length; i++) {
+        if (i === lastIndex) {
+            baseString += arr[i]
+        } else {
+            baseString += arr[i] + ", "   
+        }
+    }
+    return baseString
+}
+
+const sentence = generateSentence("highest mountains", ["Mount Everest", "K2"])
+console.log(sentence)
+
+/Practice time-part 3:
+Generate sentence/
+
+function generateSentence(desc, arr) {
+    let baseString = `The ${arr.length} ${desc} are `
+    const lastIndex = arr.length - 1
+    for (let i = 0; i < arr.length; i++) {
+        if (i === lastIndex) {
+            baseString += arr[i]
+        } else {
+            baseString += arr[i] + ", "
+        }
+        
+    }
+    return baseString
+}
+
+const sentence = generateSentence("best food", ["Tacos", "pasta"])
+console.log(sentence)
+
+/Practice time-part 3:
+Render images/
+
+HTML:
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <h1>The Brooklyn Agency</h1>
+        <div id="container">
+            <!-- <img class="team-img" src="images/hip1.jpg">
+            <img class="team-img" src="images/hip2.jpg">
+            <img class="team-img" src="images/hip3.jpg"> -->
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
+
+CSS:
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: whitesmoke;
+    text-align: center;
+    color: #130e0f;
+}
+
+h1 {
+    font-weight: 200;
+    letter-spacing: 2px;
+}
+
+#container {
+    width: 100%;
+}
+
+.team-img {
+    width: 100px;
+    border-radius: 100%;
+    margin: 10px;
+}
+
+Javascript:
+// Create a function that renders the three team images
+// Use a for loop, template strings (``), plus equals (+=)
+// .innerHTML to solve the challenge.
+
+const imgs = [
+    "images/hip1.jpg",
+    "images/hip2.jpg",
+    "images/hip3.jpg"
+]
+
+const container = document.getElementById("container")
+
+function renderImage() {
+    let listImg = ""
+    for (let i = 0; i < imgs.length; i++) {
+        listImg += `<img class="team-img> src="${imgs[i]}"`
+    }
+    container.innerHTML = listImg
+}
+
+renderImage()

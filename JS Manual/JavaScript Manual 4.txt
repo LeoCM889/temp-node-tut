@@ -1,0 +1,15 @@
+/Lesson 1: Test-Driven Development/
+
+dependencies:
+
+1. npm init @vitejs/app
+
+2. npm install jest
+
+3. npm install @types/jest
+
+4. install extension Wallaby.js
+
+5. npm run test
+
+
